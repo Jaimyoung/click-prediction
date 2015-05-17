@@ -9,8 +9,12 @@ After downloading data to `./data/` directory, prepare the data by:
 	python sampler.py 0.04 data/train_train.gz data/train_train_sample.gz
 	python sampler.py 0.04 data/train_test.gz data/train_test_sample.gz
 
+Since `fread()` in R cannot handle gzip file, let's unzip them:
+
+	gunzip data/train_train_sample.gz
+	gunzip data/train_test_sample.gz
+
 Then, analize the data in R using:
 
 	open click-prediction.Rproj
-
 
