@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-''' Sampler
+''' Random sampling of the records (lines). Usage:
+    ./sampler.py sampling_rate input_file output_file
 '''
 import sys
 import gzip
@@ -16,6 +17,11 @@ def main():
     sampling_rate = float(sys.argv[1])
     file_in = gzip.open(sys.argv[2])
     file_out = gzip.open(sys.argv[3], "w")
+
+    # handle the header
+    header = file_in.readline()
+    file_out.write(header)
+
     n = 0
     n_sampled = 0
     LOGGER.info("Start sampler with rate %f...", sampling_rate)
